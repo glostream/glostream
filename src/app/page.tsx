@@ -1,149 +1,105 @@
-import { Mail, BriefcaseBusiness } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
+import { site } from "@/lib/site";
+
+const products = [
+  {
+    href: "/substack-api",
+    name: "Substack Live",
+    kind: "API",
+    blurb:
+      "Unofficial live Substack API. Search posts, people, and publications. Read feeds, comments, profiles, and archives.",
+  },
+  {
+    href: "https://keyseer.com",
+    name: "KeySeer",
+    kind: "SaaS",
+    external: true,
+    blurb:
+      "Keyword research for SEO: generate ideas, compare markets, and read multi-year trend history.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex justify-center items-center gap-4 pt-6">
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-col gap-2 items-center">
-            <span className="text-5xl font-bold text-white">
-              GloStream Tech
-            </span>
-            <span className="text-xl text-gray-300">
-              Software services & consulting
-            </span>
-          </div>
-          <a
-            href="mailto:jbarrella@glostreamtech.com"
-            className="flex flex-row rounded-md border-2 border-white px-4 py-2 text-white transition-colors duration-200 hover:bg-white hover:text-black w-fit"
+    <div>
+      <section className="mx-auto max-w-5xl px-6 pb-20 pt-20 sm:pt-28">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-blue-400">
+          APIs &amp; software
+        </p>
+        <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
+          Live data APIs and custom software, without the theatre.
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          GloStream ships unofficial APIs for public web data and builds the
+          backends, pipelines, and dashboards teams actually run.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/substack-api"
+            className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-500"
           >
-            <Mail className="mr-2" />
-            Contact Us
+            Substack API
+          </Link>
+          <a
+            href={`mailto:${site.email}`}
+            className="rounded-md border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/40"
+          >
+            Contact
           </a>
         </div>
-        <Image
-          src="/logo-sqaure-zinc-900.png"
-          alt="GloStream Tech"
-          width={200}
-          height={200}
-        />
-      </div>
+      </section>
 
-      <div className="w-[40%] mx-auto border border-gray-700 my-8"></div>
-
-      <section className="flex-grow mt-8 flex flex-col items-center gap-12 mb-16">
-        <h1 className="text-6xl font-bold text-white">
-          Our Projects <BriefcaseBusiness className="inline-block w-8 h-8" />
-        </h1>
-        <div className="flex flex-row gap-8">
-          <div>
-            <a href="https://keyseer.com" target="_blank">
-              <div className="flex flex-col items-center justify-center gap-4 p-4 w-[440px] h-[240px] rounded-md bg-[url('/keyseer-screenshot.png')] bg-cover bg-center hover:scale-105 transition-transform duration-300 relative">
-                <div className="absolute inset-0 bg-black opacity-30"></div>
-                <span className="text-white bg-black text-xl p-2 rounded-md font-semibold z-10">
-                  KeySeer
+      <section
+        id="products"
+        className="mx-auto max-w-5xl scroll-mt-24 px-6 pb-20"
+      >
+        <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+          Products
+        </h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {products.map((product) => (
+            <Link
+              key={product.name}
+              href={product.href}
+              {...(product.external
+                ? { target: "_blank", rel: "noreferrer" }
+                : {})}
+              className="group rounded-xl border border-white/10 bg-zinc-900/50 p-6 transition hover:border-blue-500/40 hover:bg-zinc-900"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-lg font-semibold text-white">
+                  {product.name}
+                </h3>
+                <span className="rounded-full border border-white/10 px-2 py-0.5 text-[11px] uppercase tracking-wider text-zinc-500">
+                  {product.kind}
                 </span>
               </div>
-            </a>
-          </div>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                {product.blurb}
+              </p>
+              <p className="mt-4 text-sm text-blue-400 group-hover:text-blue-300">
+                {product.external ? "Open product →" : "Read more →"}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <section className="flex-grow mt-8 flex flex-col items-center gap-12 mb-16">
-        <h1 className="text-6xl font-bold text-white">About</h1>
-        <div className="flex flex-col gap-8 w-[60%] mx-auto">
-          <p className="text-xl text-gray-300 mx-auto">
-            GloStream Tech is a software services and consulting company that
-            specializes in building custom software solutions for businesses.
-            Including data analytics dashboards and cloud infrastructure. We
-            specialize in Python backend development, data engineering, and
-            full-stack development with React and NextJS.
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+          Consulting
+        </h2>
+        <div className="mt-6 max-w-2xl space-y-4 text-zinc-400">
+          <p>
+            We take on focused builds: data pipelines, analytics dashboards, and
+            cloud backends. Python and TypeScript, on AWS.
           </p>
-          <div className="flex flex-col justify-start gap-6">
-            <h2 className="text-2xl font-semibold text-white">
-              Technologies We Work With:
-            </h2>
-            <div className="grid grid-cols-2 gap-4 text-gray-300">
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">Backend</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Python</li>
-                  <li>FastAPI</li>
-                  <li>Django</li>
-                  <li>PostgreSQL</li>
-                  <li>Redis</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">AI</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>OpenAI, LLama, Gemini</li>
-                  <li>LangChain</li>
-                  <li>AWS Sagemaker</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">
-                  Frontend
-                </h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>React</li>
-                  <li>Next.js</li>
-                  <li>TypeScript</li>
-                  <li>Tailwind CSS</li>
-                  <li>Shadcn UI</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">
-                  Cloud & DevOps
-                </h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>AWS</li>
-                  <li>Docker</li>
-                  <li>Kubernetes</li>
-                  <li>CI/CD</li>
-                  <li>Terraform</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">
-                  Data Engineering
-                </h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Apache Airflow</li>
-                  <li>Apache Spark</li>
-                  <li>dbt</li>
-                  <li>Snowflake</li>
-                  <li>BigQuery</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <p className="text-sm text-zinc-500">
+            Python · FastAPI · Next.js · PostgreSQL · dbt · Snowflake · Airflow ·
+            AWS
+          </p>
         </div>
       </section>
-
-      <footer className="mt-16 py-6 text-center text-sm text-gray-500">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-center gap-4 max-sm:flex-col max-sm:gap-2">
-            <span className="text-white max-sm:scale-75">
-              <Image
-                src="/logo-sqaure-zinc-900.png"
-                alt="GloStream Tech"
-                width={50}
-                height={50}
-              />
-            </span>
-            <div className="flex flex-col items-center">
-              <span>© 2024 GloStream Limited. All rights reserved</span>
-              <span className="text-xs mt-1">
-                1st Floor Oliaji Trade Center, Victoria, Seychelles
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

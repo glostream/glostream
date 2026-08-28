@@ -1,13 +1,19 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.glostreamtech.com";
   return [
     {
-      url: `${baseUrl}/`,
+      url: `${site.url}/`,
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${site.url}/substack-api`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 }
