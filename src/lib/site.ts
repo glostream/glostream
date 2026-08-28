@@ -2,7 +2,7 @@ export const site = {
   name: "GloStream Tech",
   legal: "GloStream Limited",
   url: "https://www.glostreamtech.com",
-  email: "jbarrella@glostreamtech.com",
+  email: "jason@glostreamtech.com",
   address: "1st Floor Oliaji Trade Center, Victoria, Seychelles",
   discord: "https://discord.gg/68VXD8BP",
 } as const;

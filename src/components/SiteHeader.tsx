@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
@@ -31,7 +32,7 @@ export function SiteHeader() {
             Substack API
           </Link>
           <a
-            href="mailto:jbarrella@glostreamtech.com"
+            href={`mailto:${site.email}`}
             className="transition hover:text-white"
           >
             Contact
