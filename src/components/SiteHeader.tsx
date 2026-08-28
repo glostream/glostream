@@ -31,6 +31,12 @@ export function SiteHeader() {
           <Link href="/substack-api" className="transition hover:text-white">
             Substack API
           </Link>
+          <Link
+            href="/substack-api/docs"
+            className="hidden transition hover:text-white sm:inline"
+          >
+            Docs
+          </Link>
           <a
             href={`mailto:${site.email}`}
             className="transition hover:text-white"

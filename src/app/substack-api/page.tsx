@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { rapidApiSubstack, site } from "@/lib/site";
+import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
+import { rapidApiSubstack, site, substackPages } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Unofficial Substack API",
   description:
     "Unofficial live Substack API. Search posts, people, and publications. Read feeds, comments, profiles, and publication archives.",
-  alternates: { canonical: "/substack-api" },
-};
+  path: substackPages.product,
+});
 
 const groups = [
   {
@@ -59,6 +61,12 @@ export default function SubstackApiPage() {
         >
           Try on RapidAPI
         </a>
+        <Link
+          href={substackPages.docs}
+          className="rounded-md border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/40"
+        >
+          API docs
+        </Link>
         <a
           href={site.discord}
           className="rounded-md border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/40"
@@ -66,6 +74,14 @@ export default function SubstackApiPage() {
           Discord support
         </a>
       </div>
+      <p className="mt-6 text-sm text-zinc-500">
+        <Link
+          href={substackPages.faq}
+          className="text-blue-400 hover:text-blue-300"
+        >
+          Does Substack have an API?
+        </Link>
+      </p>
 
       <section className="mt-16">
         <h2 className="text-xl font-semibold text-white">What you can call</h2>
@@ -91,14 +107,21 @@ export default function SubstackApiPage() {
         <p>
           Successful responses wrap Substack JSON as{" "}
           <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-200">
-            {"{ \"data\": ... }"}
+            {'{ "data": ... }'}
           </code>
           . Missing parameters return 400. Unknown resources return 404.
           Upstream timeouts return 504.
         </p>
         <p>
           Subscribe and get a key on RapidAPI. Use it on every request. Live
-          support is on Discord.
+          support is on Discord.{" "}
+          <Link
+            href={substackPages.docs}
+            className="text-blue-400 hover:text-blue-300"
+          >
+            Full route list
+          </Link>
+          .
         </p>
       </section>
     </article>

@@ -21,9 +21,18 @@ export function SiteFooter() {
             <p>{site.address}</p>
           </div>
         </div>
-        <div className="flex gap-5 text-sm text-zinc-400">
+        <div className="flex flex-wrap gap-5 text-sm text-zinc-400">
           <Link href="/substack-api" className="hover:text-white">
             Substack API
+          </Link>
+          <Link href="/substack-api/docs" className="hover:text-white">
+            Docs
+          </Link>
+          <Link
+            href="/substack-api/does-substack-have-an-api"
+            className="hover:text-white"
+          >
+            FAQ
           </Link>
           <a href={`mailto:${site.email}`} className="hover:text-white">
             {site.email}

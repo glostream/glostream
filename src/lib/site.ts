@@ -9,3 +9,11 @@ export const site = {
 
 export const rapidApiSubstack =
   "https://rapidapi.com/glostream-tech-glostream-tech-default/api/substack-live";
+
+export const rapidApiSubstackHost = "substack-live.p.rapidapi.com";
+
+export const substackPages = {
+  product: "/substack-api",
+  docs: "/substack-api/docs",
+  faq: "/substack-api/does-substack-have-an-api",
+} as const;
