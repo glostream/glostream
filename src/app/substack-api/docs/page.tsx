@@ -4,6 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 import {
   rapidApiSubstack,
   rapidApiSubstackHost,
+  site,
   substackPages,
 } from "@/lib/site";
 import { substackApiGroups } from "@/lib/substack-api";
@@ -11,7 +12,7 @@ import { substackApiGroups } from "@/lib/substack-api";
 export const metadata: Metadata = pageMetadata({
   title: "Substack API docs",
   description:
-    "Unofficial Substack API routes: search, feed, publication archive, reader, profiles, and categories. Call them with a RapidAPI key.",
+    "Unofficial Substack API routes: newsletter directory search, posts, feeds, archives, comments, and profiles. Call them with a RapidAPI key.",
   path: substackPages.docs,
 });
 
@@ -35,7 +36,12 @@ export default function SubstackApiDocsPage() {
       </h1>
       <p className="mt-6 text-lg leading-relaxed text-zinc-400">
         Unofficial live read API. Subscribe on RapidAPI, send the key on every
-        request. Successful responses wrap Substack JSON as{" "}
+        request. Use{" "}
+        <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-200">
+          /search/publication
+        </code>{" "}
+        for the newsletter directory (keyword discovery). Successful responses
+        wrap Substack JSON as{" "}
         <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-200">
           {'{ "data": ... }'}
         </code>
@@ -78,6 +84,17 @@ export default function SubstackApiDocsPage() {
         <pre className="mt-4 overflow-x-auto rounded-xl border border-white/10 bg-zinc-900/60 p-4 text-sm leading-relaxed text-zinc-300">
           <code>{curl}</code>
         </pre>
+        <p className="mt-4 text-sm leading-relaxed text-zinc-500">
+          Directory example:{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-zinc-300">
+            /search/publication?query=newsletter
+          </code>
+          . For a bulk export from URLs or those keywords, ask on{" "}
+          <a href={site.discord} className="text-blue-400 hover:text-blue-300">
+            Discord
+          </a>{" "}
+          for the private Apify Actor. RapidAPI remains checkout for live REST.
+        </p>
       </section>
 
       {substackApiGroups.map((group) => (

@@ -32,7 +32,8 @@ export const substackApiGroups: ApiGroup[] = [
       {
         method: "GET",
         path: "/search/post",
-        summary: "Search posts. Paginate with page.",
+        summary:
+          "Search posts. Also returns a related-publications sidecar (newsletters that showed up next to matching posts — not directory ranking).",
         params: [
           { name: "query", required: true, note: "Search text" },
           { name: "page", note: "Starts at 0" },
@@ -52,7 +53,8 @@ export const substackApiGroups: ApiGroup[] = [
       {
         method: "GET",
         path: "/search/publication",
-        summary: "Search publications.",
+        summary:
+          "Search the newsletter directory by name or topic. Ranked publications, not posts. This is the route to use for keyword discovery.",
         params: [
           { name: "query", required: true, note: "Search text" },
           { name: "page", note: "Starts at 0" },

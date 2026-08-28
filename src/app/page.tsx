@@ -7,7 +7,7 @@ const products = [
     name: "Substack Live",
     kind: "API",
     blurb:
-      "Unofficial live Substack API. Search posts, people, and publications. Read feeds, comments, profiles, and archives.",
+      "Unofficial live Substack API. Search posts, people, and the newsletter directory. Read feeds, comments, profiles, and archives. Batch export on Apify.",
   },
   {
     href: "https://keyseer.com",

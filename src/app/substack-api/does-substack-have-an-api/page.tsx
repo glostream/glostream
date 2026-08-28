@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
-import { rapidApiSubstack, substackPages } from "@/lib/site";
+import { rapidApiSubstack, site, substackPages } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Does Substack have an API?",
@@ -26,6 +26,10 @@ const faqs = [
   {
     q: "Is the GloStream API affiliated with Substack?",
     a: "No. It is unofficial, independent, and can break when Substack changes their site. It does not publish posts, manage subscribers, or use your Substack login.",
+  },
+  {
+    q: "Can I export many newsletters at once?",
+    a: "Yes. Live REST (one request at a time) is on RapidAPI, including newsletter directory search. For a dataset from URLs or keyword search, GloStream also runs a private Apify Actor on the same API. Ask on Discord if you want a run.",
   },
 ];
 
@@ -118,6 +122,12 @@ export default function DoesSubstackHaveAnApiPage() {
         >
           API docs
         </Link>
+        <a
+          href={site.discord}
+          className="rounded-md border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/40"
+        >
+          Discord support
+        </a>
       </div>
     </article>
   );
